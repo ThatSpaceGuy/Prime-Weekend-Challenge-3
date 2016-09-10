@@ -1,0 +1,31 @@
+{
+  "name": "prime-weekend-challenge-3",
+  "version": "1.0.0",
+  "description": "See the title",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/app.js"
+  },
+  "author": "Luis H. Matos",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThatSpaceGuy/Prime-Weekend-Challenge-3.git"
+  },
+  "keywords": [
+    "Prime",
+    "Weekend",
+    "Challenge",
+    "3"
+  ],
+  "bugs": {
+    "url": "https://github.com/ThatSpaceGuy/Prime-Weekend-Challenge-3/issues"
+  },
+  "homepage": "https://github.com/ThatSpaceGuy/Prime-Weekend-Challenge-3#readme"
+}
