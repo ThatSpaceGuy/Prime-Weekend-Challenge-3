@@ -63,3 +63,4 @@ EXTRA MODE
 * 3.1 - Add other mathematical operations (e.g. exponents)
 * 3.2 - Use Bootstrap to make Calculator responsive to different sizes
 * 3.3 - Change style of number display to match real calculator
+* 4.0 - Test app and sign off on EXTRA MODE
