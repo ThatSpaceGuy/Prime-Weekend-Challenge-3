@@ -10,4 +10,6 @@ console.log('scripts.js sourced!');
 $(document).ready(function(){
   console.log('Document ready!');
 
+
+
 }); // end document ready
