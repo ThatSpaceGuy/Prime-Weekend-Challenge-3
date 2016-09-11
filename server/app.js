@@ -22,6 +22,32 @@ app.use(express.static('public'));
 
 // post route to receive information from client
 app.post('/calculate', urlEncodedParser, function(req,res){
-  console.log('Route calculate hit', req.body);
-  res.send('calculate response. Received: '+req.body);
+  console.log('Route calculate hit with', req.body);
+  var calcRequest = req.body;
+  var x = calcRequest.numA;
+  var y = calcRequest.numB;
+  var calcAns; // variable for answer
+
+  switch (calcRequest.operation) {
+    case 'Add':
+      calcAns = x + y;
+    break;
+    case 'Sub':
+      calcAns = x - y;
+    break;
+    case 'Mul':
+      calcAns = x * y;
+    break;
+    case 'Div':
+      calcAns = x / y;
+    break;
+    default:
+
+  }
+
+  var calcResponse = {
+    calcAnswer: calcAns
+  };
+
+  res.send(calcResponse);
 });

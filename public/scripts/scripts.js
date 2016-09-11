@@ -18,13 +18,13 @@ function sendCalc(){
     operation: operator,
     numB: num2
   };
-  
+
   $.ajax({
     type: 'POST',
     url: '/calculate',
     data: calcToSend,
     success: function( data ){
-      console.log( 'got this from server - ' + data );
+      console.log( 'got this from server - ' + data.calcAnswer );
     }
   }); // end Ajax post code
 
