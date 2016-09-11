@@ -1,6 +1,6 @@
 Weekend Challenge 3
 ===================
-Instructor provided description
+Instructor provided description:
 Welcome to your third weekend challenge!
 
 We are going to be building a calculator application using jQuery, Node, and Express, all hosted on Heroku!
@@ -61,6 +61,7 @@ PRO MODE
 EXTRA MODE
 ----------
 * 3.1 - Add other mathematical operations (e.g. exponents)
-* 3.2 - Use Bootstrap to make Calculator responsive to different sizes
-* 3.3 - Change style of number display to match real calculator
+* 3.2 - Add ability to take multiple operations in a row (like a calculator)
+* 3.3 - Use Bootstrap to make Calculator responsive to different sizes
+* 3.4 - Change style of number display to match real calculator
 * 4.0 - Test app and sign off on EXTRA MODE

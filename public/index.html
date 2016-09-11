@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<script src="vendors/jquery-3.1.0.min.js"></script>
-    <script src="scripts/scripts.js"></script>
-		<link rel="stylesheet" href="vendors/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css"/>
-		<title>Prime Weekend Challenge 3 - Calculator Webapp</title>
-	</head>
-	<body>
-		<h1>Web Calculator</h1>
-		<h3>by Luis H. Matos</h3>
-	</body>
+<head>
+	<script src="vendors/jquery-3.1.0.min.js"></script>
+	<script src="scripts/scripts.js"></script>
+	<link rel="stylesheet" href="vendors/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/styles.css"/>
+	<title>Prime Weekend Challenge 3 - Calculator Webapp</title>
+</head>
+<body>
+	<h1>Web Calculator</h1>
+	<h3>by Luis H. Matos</h3>
+	<div id="calcBox">
+		<div id="calcInputs">
+			<input type="text" id="num1" class="numBox" placeholder="Enter a number"/>
+			<br/>
+			<select id="operatorButton">
+				<option value="Add">+</option>
+				<option value="Sub">-</option>
+				<option value="Mul">*</option>
+				<option value="Div">/</option>
+			</select>
+			<br/>
+			<input type="text" id="num2" class="numBox" placeholder="Enter a number"/>
+		</div>
+		<div id="calcEquals">
+			<p>=</p>
+			<p id="calcAnswer"></p>
+		</div>
+	</div>
+</body>
 </html>

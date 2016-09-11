@@ -10,3 +10,11 @@ body {
 	text-align: center;
 	background-color: darkgray;
 }
+
+#calcBox {
+	margin-top: 50px;
+}
+
+.numBox {
+	text-align: center;
+}
