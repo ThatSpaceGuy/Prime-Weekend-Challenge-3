@@ -19,3 +19,9 @@ app.get('/', function(req,res){
 
 // setup 'public' as a static resource
 app.use(express.static('public'));
+
+// post route to receive information from client
+app.post('/calculate', urlEncodedParser, function(req,res){
+  console.log('Route calculate hit', req.body);
+  res.send('calculate response. Received: '+req.body);
+});
