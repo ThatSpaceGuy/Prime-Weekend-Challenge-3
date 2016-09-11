@@ -15,6 +15,10 @@ body {
 	margin-top: 50px;
 }
 
+#clearButton {
+	margin-top: 50px;
+}
+
 .numBox {
 	text-align: center;
 }

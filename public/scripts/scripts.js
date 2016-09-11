@@ -5,10 +5,9 @@ var verbose = true; // if (verbose) {console.log('');}
 /// == Function Declarations == ///
 function sendCalc(){
   if (verbose) {console.log('in sendCalc');}
-
-  var num1 = Number($('#numOne').val());
+  var num1 = $('#numOne').val();
   var operator = $('#operatorButton').val();
-  var num2 = Number($('#numTwo').val());
+  var num2 = $('#numTwo').val();
 
   if (verbose) {console.log('Values: ', num1, operator, num2);}
 
@@ -24,14 +23,19 @@ function sendCalc(){
     url: '/calculate',
     data: calcToSend,
     success: function( data ){
-      var calcResult = data.calcAnswer
+      var calcResult = data.calcAnswer;
       if (verbose) {console.log( 'got this from server - ' + data.calcAnswer );}
-
-
       $('#showAnswer').html(calcResult);
     }
   }); // end Ajax post code
+} // end function sendCalc
 
+function clearFields(){
+  if (verbose) {console.log('in clearFields');}
+  // clear all fields
+  $('#numOne').val('');
+  $('#numTwo').val('');
+  $('#showAnswer').html('');
 }
 
 /// == JavaScript == ///
@@ -40,5 +44,7 @@ $(document).ready(function(){
   console.log('Document ready!');
 
   $('#equalsButton').on('click',sendCalc);
+
+  $('#clearButton').on('click',clearFields);
 
 }); // end document ready
