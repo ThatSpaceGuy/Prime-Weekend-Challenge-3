@@ -24,7 +24,11 @@ function sendCalc(){
     url: '/calculate',
     data: calcToSend,
     success: function( data ){
-      console.log( 'got this from server - ' + data.calcAnswer );
+      var calcResult = data.calcAnswer
+      if (verbose) {console.log( 'got this from server - ' + data.calcAnswer );}
+
+
+      $('#showAnswer').html(calcResult);
     }
   }); // end Ajax post code
 

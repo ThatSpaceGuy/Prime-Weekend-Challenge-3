@@ -22,10 +22,10 @@ app.use(express.static('public'));
 
 // post route to receive information from client
 app.post('/calculate', urlEncodedParser, function(req,res){
-  console.log('Route calculate hit with', req.body);
   var calcRequest = req.body;
-  var x = calcRequest.numA;
-  var y = calcRequest.numB;
+  console.log('Route calculate hit with', calcRequest);
+  var x = Number(calcRequest.numA);
+  var y = Number(calcRequest.numB);
   var calcAns; // variable for answer
 
   switch (calcRequest.operation) {
