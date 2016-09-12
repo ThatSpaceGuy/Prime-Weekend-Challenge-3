@@ -10,27 +10,29 @@ function doCalc(){
   var calcEntry = $('#currentDisplay').html();
 
   if (calcEntry==='Enter calculation') {
-    $('#infoMessage').html('Please enter a calcutlation');
+    $('#infoMessage').html('Please enter a calculation');
   } else {
     var calcArray = calcEntry.split(" ");
     var calcLength = calcArray.length;
+    if (verbose) {console.log('calcArray:', calcArray);}
 
     if (calcLength<2) {
       $('#historyDisplay').prepend('<p>'+calcArray[0]+' = '+calcArray[0]+'</p>');
+      clearFields();
     } else if (calcLength>3){
       $('#infoMessage').html('Internal Error - Press Clear');
     } else {
       var num1 = calcArray[0];
       var operator = calcArray[1];
       var num2;
-      if (calcLength==2) {
-        num2 = 0;
+      if (calcLength===2 || calcArray[2]==='') {
+        num2 = '0';
       } else {
         num2 = calcArray[2];
       }
       if (verbose) {console.log('Values: ', num1, operator, num2);}
 
-      if (operator === '/' && num2 === 0)  {
+      if ((operator === '/') && (num2 === '0'))  {
         $('#currentDisplay').html(num1+' '+operator+' ');
         $('#infoMessage').html('Division by Zero Error - Please enter a valid divisor');
       } else {
@@ -69,11 +71,11 @@ function doCalc(){
             $('#historyDisplay').prepend('<p>'+calcResult+'</p>');
           }
         }); // end Ajax post code
+
+        clearFields();
       }
     }
   }
-
-  clearFields();
 } // end function doCalc
 
 function clearFields(){
