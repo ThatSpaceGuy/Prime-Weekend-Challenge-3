@@ -5,9 +5,9 @@ var verbose = true; // if (verbose) {console.log('');}
 /// == Function Declarations == ///
 function sendCalc(){
   if (verbose) {console.log('in sendCalc');}
-  var num1 = $('#numOne').val();
+  var num1 = $('#numOne').html();
   var operator = $('#operatorButton').val();
-  var num2 = $('#numTwo').val();
+  var num2 = $('#numTwo').html();
 
   if (verbose) {console.log('Values: ', num1, operator, num2);}
 
@@ -33,9 +33,22 @@ function sendCalc(){
 function clearFields(){
   if (verbose) {console.log('in clearFields');}
   // clear all fields
-  $('#numOne').val('');
-  $('#numTwo').val('');
+  $('#numOne').html('Enter a number below');
+  $('#numTwo').html('Enter a number below');
   $('#showAnswer').html('');
+}
+
+function displayNum(){
+  if (verbose) {console.log('this:', this);}
+  whichNum=$(this).data('num');
+  whichDigit=$(this).data('digit');
+  if (verbose) {console.log('in displayNum with:',this, whichNum, whichDigit);}
+
+  if ($('#'+whichNum).html()==='Enter a number below'){
+    $('#'+whichNum).html(whichDigit);
+  } else {
+    $('#'+whichNum).append(whichDigit);
+  }
 }
 
 /// == JavaScript == ///
@@ -46,5 +59,7 @@ $(document).ready(function(){
   $('#equalsButton').on('click',sendCalc);
 
   $('#clearButton').on('click',clearFields);
+
+  $('.numButton').on('click',displayNum);
 
 }); // end document ready

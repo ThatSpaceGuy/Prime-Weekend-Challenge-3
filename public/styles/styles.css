@@ -9,9 +9,18 @@
 body {
 	text-align: center;
 	background-color: darkgray;
+	font-size: 20px;
 }
 
 #calcBox {
+	margin-top: 50px;
+}
+
+#operatorButton {
+	display: inline;
+}
+
+#answerBox {
 	margin-top: 50px;
 }
 
