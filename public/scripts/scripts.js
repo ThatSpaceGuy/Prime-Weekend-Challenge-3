@@ -15,26 +15,34 @@ function doCalc(){
     var calcArray = calcEntry.split(" ");
     var calcLength = calcArray.length;
     if (verbose) {console.log('calcArray:', calcArray);}
+    var num1=calcArray[0];
 
-    if (calcLength<2) {
-      $('#historyDisplay').prepend('<p>'+calcArray[0]+' = '+calcArray[0]+'</p>');
+    if (num1==='.'){
+      num1 = 0;
+    }
+
+    if (calcLength<2 && $.isNumeric(num1)) {
+      $('#historyDisplay').prepend('<p>'+num1+' = '+num1+'</p>');
       clearFields();
     } else if (calcLength>3){
-      $('#infoMessage').html('Internal Error - Press Clear');
+      $('#infoMessage').html('Internal Error - Please contact Site Administrator');
     } else {
-      var num1 = calcArray[0];
       var operator = calcArray[1];
-      var num2;
-      if (calcLength===2 || calcArray[2]==='') {
+      if (calcLength===2){
+        calcArray[2]='';
+      }
+      var num2 = calcArray[2];
+      if (num2==='' || num2==='.') {
         num2 = '0';
-      } else {
-        num2 = calcArray[2];
       }
       if (verbose) {console.log('Values: ', num1, operator, num2);}
 
-      if ((operator === '/') && (num2 === '0'))  {
+      if (operator === '/' && num2 === '0')  {
         $('#currentDisplay').html(num1+' '+operator+' ');
         $('#infoMessage').html('Division by Zero Error - Please enter a valid divisor');
+      } else if (!$.isNumeric(num1) || !$.isNumeric(num2)) {
+        $('#currentDisplay').html('Enter calculation');
+        $('#infoMessage').html('Invalid Number Alert - Please use only one . per number');
       } else {
         // ajax post code that sends object to /routename route
         var calcUrl;
