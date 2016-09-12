@@ -11,59 +11,59 @@
 	<h1>Web Calculator</h1>
 	<h3>by Luis H. Matos</h3>
 	<div id="calcBox" class="container">
-		<div class="row">
-			<div id="numOneBox" class="col-xs-5">
-				<p id="numOne" class="numBox">Enter a number below</p>
-				<button id="x7" class="numButton" data-num="numOne" data-digit="7">7</button>
-				<button id="x8" class="numButton" data-num="numOne" data-digit="8">8</button>
-				<button id="x9" class="numButton" data-num="numOne" data-digit="9">9</button>
-				<br>
-				<button id="x4" class="numButton" data-num="numOne" data-digit="4">4</button>
-				<button id="x5" class="numButton" data-num="numOne" data-digit="5">5</button>
-				<button id="x6" class="numButton" data-num="numOne" data-digit="6">6</button>
-				<br>
-				<button id="x1" class="numButton" data-num="numOne" data-digit="1">1</button>
-				<button id="x2" class="numButton" data-num="numOne" data-digit="2">2</button>
-				<button id="x3" class="numButton" data-num="numOne" data-digit="3">3</button>
-				<br>
-				<button id="x0" class="numButton" data-num="numOne" data-digit="0">0</button>
-				<button id="xDot" class="numButton" data-num="numOne" data-digit=".">.</button>
-			</div>
-			<select id="operatorButton" class="col-xs-2">
-				<option value="Add">+</option>
-				<option value="Sub">-</option>
-				<option value="Mul">*</option>
-				<option value="Div">/</option>
-			</select>
-			<div id="numTwoBox" class="col-xs-5">
-				<p id="numTwo" class="numBox">Enter a number below</p>
-				<button id="y7" class="numButton" data-num="numTwo" data-digit="7">7</button>
-				<button id="y8" class="numButton" data-num="numTwo" data-digit="8">8</button>
-				<button id="y9" class="numButton" data-num="numTwo" data-digit="9">9</button>
-				<br>
-				<button id="y4" class="numButton" data-num="numTwo" data-digit="4">4</button>
-				<button id="y5" class="numButton" data-num="numTwo" data-digit="5">5</button>
-				<button id="y6" class="numButton" data-num="numTwo" data-digit="6">6</button>
-				<br>
-				<button id="y1" class="numButton" data-num="numTwo" data-digit="1">1</button>
-				<button id="y2" class="numButton" data-num="numTwo" data-digit="2">2</button>
-				<button id="y3" class="numButton" data-num="numTwo" data-digit="3">3</button>
-				<br>
-				<button id="y0" class="numButton" data-num="numTwo" data-digit="0">0</button>
-				<button id="yDot" class="numButton" data-num="numTwo" data-digit=".">.</button>
-			</div>
+		<div id="calculatorBody" class="container">
+			<div id="fullDisplay" class="row">
+				<div id="userInterface" class="col-xs-8">
+					<div id="currentDisplay" class="row">
+						Enter equation
+					</div>
+					<div id="buttonBox" class="containter">
+						<div id="numBox" class="col-xs-9">
+							<div class="row numRow">
+								<button id="seven" class="numButton col-xs-3 col-xs-offset-1 btn btn-primary" data-digit="7">7</button>
+								<button id="eight" class="numButton col-xs-3 col-xs-offset-1 btn btn-primary" data-digit="8">8</button>
+								<button id="nine" class="numButton col-xs-3 col-xs-offset-1 btn btn-primary" data-digit="9">9</button>
+							</div>
+							<div class="row numRow">
+								<button id="four" class="numButton col-xs-3 col-xs-offset-1 btn btn-primary" data-digit="4">4</button>
+								<button id="five" class="numButton col-xs-3 col-xs-offset-1 btn btn-primary" data-digit="5">5</button>
+								<button id="six" class="numButton col-xs-3 col-xs-offset-1 btn btn-primary" data-digit="6">6</button>
+							</div>
+							<div class="row numRow">
+								<button id="one" class="numButton col-xs-3 col-xs-offset-1 btn btn-primary" data-digit="1">1</button>
+								<button id="two" class="numButton col-xs-3 col-xs-offset-1 btn btn-primary" data-digit="2">2</button>
+								<button id="three" class="numButton col-xs-3 col-xs-offset-1 btn btn-primary" data-digit="3">3</button>
+							</div>
+							<div class="row numRow">
+								<button id="zero" class="numButton col-xs-7 col-xs-offset-1 btn btn-primary" data-digit="0">0</button>
+								<button id="dot" class="numButton col-xs-3 col-xs-offset-1 btn btn-primary" data-digit=".">.</button>
+							</div>
+						</div>
+						<div id="operatorBox" class="col-xs-2 col-xs-offset-1">
+							<div class="row operatorRow">
+								<button id="addi" class="operatorButton col-xs-6 btn btn-warning" data-op="+">+</button>
+							</div>
+							<div class="row operatorRow">
+								<button id="subt" class="operatorButton col-xs-6 btn btn-warning" data-op="-">-</button>
+							</div>
+							<div class="row operatorRow">
+								<button id="mult" class="operatorButton col-xs-6 btn btn-warning" data-op="*">*</button>
+							</div>
+							<div class="row operatorRow">
+								<button id="divi" class="operatorButton col-xs-6 btn btn-warning" data-op="/">/</button>
+							</div>
+						</div>
+						<div id="actionBox" class="row">
+							<button id="clearButton" class="actionButton col-xs-2 col-xs-offset-2 btn btn-danger">Clear</button>
+							<button id="equalsButton" class="actionButton col-xs-5 col-xs-offset-1 btn btn-success">=</button>
+						</div>
+					</div>
+				</div> <!-- End #userInterface -->
+				<div id="historyDisplay" class="col-xs-4">
 
-			</div>
-			<div id="answerBox" class="row">
-				<div class="row">
-					<button id="equalsButton" class="col-xs-2 col-xs-offset-5">=</button>
 				</div>
-				<div class="row">
-					<br>
-					<text id="showAnswer"></text>
-				</div>
-			</div>
-	</div>
-	<button id="clearButton">Clear</button>
+			</div> <!-- End #fullDisplay -->
+		</div> <!-- End #calculatorBody -->
+	</div> <!-- End #calcBox -->
 </body>
 </html>

@@ -16,18 +16,43 @@ body {
 	margin-top: 50px;
 }
 
-#operatorButton {
-	display: inline;
+#calculatorBody {
+	background-color: white;
+	border-radius: 15px;
 }
 
-#answerBox {
-	margin-top: 50px;
+#fullDisplay {
+	padding: 10px;
 }
 
-#clearButton {
-	margin-top: 50px;
+#historyDisplay {
+	background-color: lightgray;
+	min-height: 300px;
+	border-radius: 15px;
+	font-size: 15px;
 }
 
-.numBox {
-	text-align: center;
+#currentDisplay {
+	background-color: lightgray;
+	margin: 5px;
+	min-height: 30px;
+	border-radius: 10px;
+	font-size: 30px;
+}
+
+.btn {
+	font-size: 20px;
+}
+
+.numButton, .operatorButton, .actionButton {
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+.numRow:first-child, .operatorRow:first-child {
+	margin-top: 30px;
+}
+
+.actionButton {
+	margin-top: 30px;
 }
