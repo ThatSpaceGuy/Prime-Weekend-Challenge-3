@@ -1,6 +1,7 @@
 console.log('scripts.js sourced!');
 /// == Global Variable Declarations == ///
 var verbose = true; // if (verbose) {console.log('');}
+var operationChosen = false;
 
 /// == Function Declarations == ///
 function sendCalc(){
@@ -30,24 +31,54 @@ function sendCalc(){
   }); // end Ajax post code
 } // end function sendCalc
 
-function clearFields(){
+function clearField(){
   if (verbose) {console.log('in clearFields');}
   // clear all fields
-  $('#numOne').html('Enter a number below');
-  $('#numTwo').html('Enter a number below');
-  $('#showAnswer').html('');
+  $('#currentDisplay').html('Enter equation');
+}
+
+function emptyInfo(){
+  if (verbose) {console.log('in emptyInfo');}
+  // clear info field
+  $('#infoMessage').html('');
 }
 
 function displayNum(){
-  if (verbose) {console.log('this:', this);}
-  whichNum=$(this).data('num');
-  whichDigit=$(this).data('digit');
-  if (verbose) {console.log('in displayNum with:',this, whichNum, whichDigit);}
+  emptyInfo();
+  var whichDigit=$(this).data('digit');
+  if (verbose) {console.log('in displayNum with:',this,whichDigit);}
+  var currentString = $('#currentDisplay').html();
+  var strLength = currentString.length;
 
-  if ($('#'+whichNum).html()==='Enter a number below'){
-    $('#'+whichNum).html(whichDigit);
+  // check to see if an operation has been chosen
+  // to prevent multiple operations
+  if (currentString.charAt(strLength-1)===' '){
+    operationChosen = true;
+  }
+
+  if (currentString==='Enter equation'){
+    $('#currentDisplay').html(whichDigit);
   } else {
-    $('#'+whichNum).append(whichDigit);
+    $('#currentDisplay').append(whichDigit);
+  }
+}
+
+function displayOp() {
+  emptyInfo();
+  var whichOp=$(this).data('op');
+  if (verbose) {console.log('in displayOp with:',this,whichOp);}
+  var currentString = $('#currentDisplay').html();
+  var strLength = currentString.length;
+
+  if (currentString === 'Enter equation'){
+    $('#currentDisplay').html('0 '+whichOp);
+  } else if (currentString.charAt(strLength-1)===' '){
+    $('#currentDisplay').html(currentString.substring(0,strLength-2));
+    $('#currentDisplay').append(whichOp+' ');
+  } else if (operationChosen) {
+    $('#infoMessage').html('Only one operation per calcuation');
+  } else {
+    $('#currentDisplay').append(' '+whichOp+' ');
   }
 }
 
@@ -58,8 +89,10 @@ $(document).ready(function(){
 
   $('#equalsButton').on('click',sendCalc);
 
-  $('#clearButton').on('click',clearFields);
+  $('#clearButton').on('click',clearField);
 
   $('.numButton').on('click',displayNum);
+
+  $('.operatorButton').on('click',displayOp);
 
 }); // end document ready
