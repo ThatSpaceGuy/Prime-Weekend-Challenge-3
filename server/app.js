@@ -20,37 +20,58 @@ app.get('/', function(req,res){
 // setup 'public' as a static resource
 app.use(express.static('public'));
 
-// post route to receive information from client
-app.post('/calculate', urlEncodedParser, function(req,res){
+// post routes to receive information from client
+app.post('/addition', urlEncodedParser, function(req,res){
   var calcRequest = req.body;
   console.log('Route calculate hit with', calcRequest);
   var x = Number(calcRequest.numA);
   var y = Number(calcRequest.numB);
-  var calcAns; // variable for answer
-
-  switch (calcRequest.operation) {
-    case 'Add':
-      calcAns = x + y;
-    break;
-    case 'Sub':
-      calcAns = x - y;
-    break;
-    case 'Mul':
-      calcAns = x * y;
-    break;
-    case 'Div':
-      if (y===0){
-        calcAns = "Div by 0 Error";
-      } else {
-        calcAns = x / y;
-      }
-    break;
-    default:
-
-  }
+  var calcAns = x + y; // variable for answer
 
   var calcResponse = {
-    calcAnswer: calcAns
+    calcAnswer: x+' + '+y+' = '+calcAns
+  };
+
+  res.send(calcResponse);
+});
+
+app.post('/subtraction', urlEncodedParser, function(req,res){
+  var calcRequest = req.body;
+  console.log('Route calculate hit with', calcRequest);
+  var x = Number(calcRequest.numA);
+  var y = Number(calcRequest.numB);
+  var calcAns = x - y; // variable for answer
+
+  var calcResponse = {
+    calcAnswer: x+' - '+y+' = '+calcAns
+  };
+
+  res.send(calcResponse);
+});
+
+app.post('/multiplication', urlEncodedParser, function(req,res){
+  var calcRequest = req.body;
+  console.log('Route calculate hit with', calcRequest);
+  var x = Number(calcRequest.numA);
+  var y = Number(calcRequest.numB);
+  var calcAns = x * y; // variable for answer
+
+  var calcResponse = {
+    calcAnswer: x+' * '+y+' = '+calcAns
+  };
+
+  res.send(calcResponse);
+});
+
+app.post('/division', urlEncodedParser, function(req,res){
+  var calcRequest = req.body;
+  console.log('Route calculate hit with', calcRequest);
+  var x = Number(calcRequest.numA);
+  var y = Number(calcRequest.numB);
+  var calcAns = x / y; // variable for answer
+
+  var calcResponse = {
+    calcAnswer: x+' / '+y+' = '+calcAns
   };
 
   res.send(calcResponse);

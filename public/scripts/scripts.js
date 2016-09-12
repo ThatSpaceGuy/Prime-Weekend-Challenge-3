@@ -80,6 +80,7 @@ function clearFields(){
   if (verbose) {console.log('in clearFields');}
   // clear all fields
   $('#currentDisplay').html('Enter calculation');
+  operationChosen = false;
   emptyInfo();
 }
 

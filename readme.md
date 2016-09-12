@@ -54,8 +54,7 @@ PRO MODE
 * 2.1 - HTML - Use Bootstrap to style as a physical calculator
 * 2.2 - Client JS - get info from buttons and incorporate decimal logic
 * 2.3 - Sever/Client JS - Move logic for deciding operation to Client
-* 2.4 - Client JS - Add POST routes for each operation
-* 2.5 - Server JS - Add 'operation routes' to execute Client requests (see ex. above)
+* 2.4 - Server JS - Add 'operation routes' to execute Client requests (see ex. above)
 * 3.0 - Test app and sign off on PRO MODE
 
 EXTRA MODE
