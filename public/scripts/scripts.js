@@ -43,6 +43,7 @@ function doCalc(){
       } else if (!$.isNumeric(num1) || !$.isNumeric(num2)) {
         $('#currentDisplay').html('Enter calculation');
         $('#infoMessage').html('Invalid Number Alert - Please use only one . per number');
+        operationChosen = false;
       } else {
         // ajax post code that sends object to /routename route
         var calcUrl;
