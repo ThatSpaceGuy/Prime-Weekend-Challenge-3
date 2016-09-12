@@ -39,7 +39,11 @@ app.post('/calculate', urlEncodedParser, function(req,res){
       calcAns = x * y;
     break;
     case 'Div':
-      calcAns = x / y;
+      if (y===0){
+        calcAns = "Div by 0 Error";
+      } else {
+        calcAns = x / y;
+      }
     break;
     default:
 
