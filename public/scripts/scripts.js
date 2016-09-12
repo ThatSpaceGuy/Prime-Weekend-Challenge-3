@@ -4,37 +4,83 @@ var verbose = true; // if (verbose) {console.log('');}
 var operationChosen = false;
 
 /// == Function Declarations == ///
-function sendCalc(){
-  if (verbose) {console.log('in sendCalc');}
-  var num1 = $('#numOne').html();
-  var operator = $('#operatorButton').val();
-  var num2 = $('#numTwo').html();
+function doCalc(){
+  emptyInfo();
+  if (verbose) {console.log('in doCalc');}
+  var calcEntry = $('#currentDisplay').html();
 
-  if (verbose) {console.log('Values: ', num1, operator, num2);}
+  if (calcEntry==='Enter calculation') {
+    $('#infoMessage').html('Please enter a calcutlation');
+  } else {
+    var calcArray = calcEntry.split(" ");
+    var calcLength = calcArray.length;
 
-  // ajax post code that sends object to /routename route
-  var calcToSend={
-    numA: num1,
-    operation: operator,
-    numB: num2
-  };
+    if (calcLength<2) {
+      $('#historyDisplay').prepend('<p>'+calcArray[0]+' = '+calcArray[0]+'</p>');
+    } else if (calcLength>3){
+      $('#infoMessage').html('Internal Error - Press Clear');
+    } else {
+      var num1 = calcArray[0];
+      var operator = calcArray[1];
+      var num2;
+      if (calcLength==2) {
+        num2 = 0;
+      } else {
+        num2 = calcArray[2];
+      }
+      if (verbose) {console.log('Values: ', num1, operator, num2);}
 
-  $.ajax({
-    type: 'POST',
-    url: '/calculate',
-    data: calcToSend,
-    success: function( data ){
-      var calcResult = data.calcAnswer;
-      if (verbose) {console.log( 'got this from server - ' + data.calcAnswer );}
-      $('#showAnswer').html(calcResult);
+      if (operator === '/' && num2 === 0)  {
+        $('#currentDisplay').html(num1+' '+operator+' ');
+        $('#infoMessage').html('Division by Zero Error - Please enter a valid divisor');
+      } else {
+        // ajax post code that sends object to /routename route
+        var calcUrl;
+
+        switch (operator) {
+          case '+':
+          calcUrl = '/addition';
+          break;
+          case '-':
+          calcUrl = '/subtraction';
+          break;
+          case '*':
+          calcUrl = '/multiplication';
+          break;
+          case '/':
+            calcUrl = '/division';
+          break;
+          default:
+        }
+
+        var calcToSend={
+          numA: num1,
+          operation: operator,
+          numB: num2
+        };
+
+        $.ajax({
+          type: 'POST',
+          url: calcUrl,
+          data: calcToSend,
+          success: function( data ){
+            var calcResult = data.calcAnswer;
+            if (verbose) {console.log( 'got this from server - ' + calcResult );}
+            $('#historyDisplay').prepend('<p>'+calcResult+'</p>');
+          }
+        }); // end Ajax post code
+      }
     }
-  }); // end Ajax post code
-} // end function sendCalc
+  }
 
-function clearField(){
+  clearFields();
+} // end function doCalc
+
+function clearFields(){
   if (verbose) {console.log('in clearFields');}
   // clear all fields
-  $('#currentDisplay').html('Enter equation');
+  $('#currentDisplay').html('Enter calculation');
+  emptyInfo();
 }
 
 function emptyInfo(){
@@ -56,7 +102,7 @@ function displayNum(){
     operationChosen = true;
   }
 
-  if (currentString==='Enter equation'){
+  if (currentString==='Enter calculation'){
     $('#currentDisplay').html(whichDigit);
   } else {
     $('#currentDisplay').append(whichDigit);
@@ -70,7 +116,7 @@ function displayOp() {
   var currentString = $('#currentDisplay').html();
   var strLength = currentString.length;
 
-  if (currentString === 'Enter equation'){
+  if (currentString === 'Enter calculation'){
     $('#currentDisplay').html('0 '+whichOp);
   } else if (currentString.charAt(strLength-1)===' '){
     $('#currentDisplay').html(currentString.substring(0,strLength-2));
@@ -87,9 +133,9 @@ function displayOp() {
 $(document).ready(function(){
   console.log('Document ready!');
 
-  $('#equalsButton').on('click',sendCalc);
+  $('#equalsButton').on('click',doCalc);
 
-  $('#clearButton').on('click',clearField);
+  $('#clearButton').on('click',clearFields);
 
   $('.numButton').on('click',displayNum);
 
